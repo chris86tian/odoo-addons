@@ -1,5 +1,13 @@
 ## Modul eq_pos
 
+#### 23.02.2017
+#### Version 1.0.37
+##### CHGT
+- FIX - größe Barcode lesbar angepasst
+- FIX - Steuerberechnung eingebaut
+- FIX - automatische Order Bestätigung  durch "Scanner send Return" ausgebaut
+- FIX - Checkout mit Rückgabegutschein nur im Rückgabemodus sichtbar.
+
 #### 26.10.2016
 #### Version 1.0.36
 ##### CHG
