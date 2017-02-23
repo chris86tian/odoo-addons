@@ -2,7 +2,7 @@
 
 #### 23.02.2017
 #### Version 1.0.37
-##### CHGT
+##### chris86tian
 - FIX - größe Barcode lesbar angepasst
 - FIX - Steuerberechnung eingebaut
 - FIX - automatische Order Bestätigung  durch "Scanner send Return" ausgebaut
