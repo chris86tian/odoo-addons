@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Odoo Addon, Open Source Management Solution
-#    Copyright (C) 2014-now Equitania Software GmbH(<http://www.equitania.de>).
+#    Author: Bhavesh Odedra (<bhavesh.b.odedra@gmail.com>)
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -17,12 +16,13 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-##############################################################################
+###############################################################################
 
-import pos_order
-import coupon
-import bonus_return
-import eq_report_sessionsummary
-import res_partner
-import account_tax
+from openerp import models, fields
+
+class AccountTax(models.Model):
+    _inherit = 'account.tax'
+    
+    eq_price_percentage = fields.Char(string='Price Percentage')
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

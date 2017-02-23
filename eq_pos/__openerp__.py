@@ -27,7 +27,7 @@ This module is used to return the products to the customer from POS Interface, G
 """,
     'author': "Equitania Software GmbH",
     'website': "www.myodoo.de",
-    'depends': ['web', 'point_of_sale', 'base'],
+    'depends': ['web', 'point_of_sale', 'base', 'account'],
     'data': [
              'security/ir.model.access.csv',
              'views/eq_pos.xml',
@@ -37,7 +37,8 @@ This module is used to return the products to the customer from POS Interface, G
              'coupon/pos_coupon_view.xml',
              'coupon/pos_coupon_security.xml',
              'coupon/account_journal.xml',
-             'bonus_return/bonus_return_view.xml'     
+             'bonus_return/bonus_return_view.xml',
+             'views/account_tax_view.xml'     
              ],
     'demo': [],
     'test': [],
