@@ -1,0 +1,25 @@
+<?xml version="1.0"?> 
+<openerp>
+    
+    <data>
+        
+        <!-- Account Journal Form view -->
+        <record id="view_accont_journal_report_field_form" model="ir.ui.view">
+            <field name="name">view.account.journal.report.field.form</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[1]/group[1]" position="inside">
+                    <group cols="4">
+                        <group string="Active Addition on Summary Report">
+                            <field name="cash_turnover_addition"/>
+                            <field name="goods_turnover_addition"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+        
+</openerp>

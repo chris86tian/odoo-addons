@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<!-- 2a. registration of second version of default report (without info section) under print option -->
+         <report id="od_action_report_pos_session_summary_short"
+            string="Kassenbericht - Kurz"
+            model="pos.session"
+            report_type="qweb-pdf"
+            name="od_pos_customization.od_report_sessionsummary_short"
+            file="od_pos_customization.od_report_sessionsummary_short" />
+            								
+		<!-- 2b. short version of session summary -->
+		<template id="od_report_sessionsummary_short">
+		    <t t-call="report.html_container">
+		        <t t-foreach="docs" t-as="o">
+	                <div class="page">
+                        <center>
+                            <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 75px;width: 300px"/>
+                        </center>
+	                    <h2>Kassenbericht: <span t-field="o.name"/></h2>
+	                    <div class="row mt8">
+	                    </div>
+	                    <div class="row mt8">
+	                        <div class="col-xs-5" style="font-size: 18px">
+	                            <strong>Kassenleitung:</strong><br/>
+	                        </div>
+	                        <div class="col-xs-15" style="font-size: 18px">
+	                            <strong><span t-field="o.user_id"/></strong>
+	                        </div>
+                        </div>
+                        <div class="row mt8">
+	                        <div class="col-xs-5" style="font-size: 18px">
+	                            <strong>Kasse:</strong><br/>
+	                        </div>
+	                        <div class="col-xs-15" style="font-size: 18px">
+	                            <strong><span t-field="o.config_id"/></strong>
+	                        </div>
+	                    </div>    
+                        <div class="row mt8" style="font-size: 18px">
+	                        <div class="col-xs-5" style="font-size: 18px">
+	                            <strong>Eröffnungsdatum:</strong><br/>
+	                        </div>
+	                        <div class="col-xs-15" style="font-size: 18px">
+	                            <strong><span t-field="o.start_at"/></strong>
+	                        </div>
+	                    </div>    
+                        <div class="row mt8">
+	                        <div class="col-xs-5" style="font-size: 18px">
+	                            <strong>Kassenabschluss:</strong><br/>
+	                        </div>
+	                        <div class="col-xs-15" style="font-size: 18px">
+	                            <strong><span t-field="o.stop_at"/></strong>
+	                        </div>
+	                    </div>
+	                    <div class="row mt8">
+	                    </div>
+	                    <h4><strong>Kassenbericht</strong></h4>		
+	                    <table class="table table-condensed">
+	                        <thead>
+	                            <tr>
+	                                <th style="font-size: 18px">
+	                                    <strong>Referenz</strong>
+	                                </th>
+	                                <th style="font-size: 18px">
+	                                    <strong>Journal</strong>
+	                                </th>
+	                                <th class="text-right" style="font-size: 18px">
+	                                    <strong>Endsaldo</strong>
+	                                </th>
+	                                <th class="text-right">
+	                                    <div style="color:white;">...............</div>
+	                                </th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                            <tr t-foreach="o.statement_ids" t-as="statement">
+	                                <td><strong><span t-field="statement.name" style="font-size: 18px"/></strong></td>
+	                                <td><strong><span t-field="statement.journal_id" class="text-right" style="font-size: 18px"/></strong></td>
+	                                <td class="text-right" style="font-size: 18px">
+	                                    <strong>
+	                                    <span t-field="statement.balance_end_real"
+	                                        t-field-options='{"widget": "monetary", "display_currency": "statement.currency"}'/></strong>
+	                                </td>
+	                                <td></td>
+	                            </tr>
+	                        </tbody>
+	                    </table>
+                        <table style="width:100%;">
+							<tr style="border-bottom: 2px groove black !important;">
+								<td style=" padding:7px 0px 7px 0; width:4cm; font-size: 18px"><b>Barumsatz: </b></td>
+								<td style=" padding:0px 50px 0px 0; font-size: 18px" class="text-right"><b><t t-esc="get_cash_turnover(o)"/></b></td>
+							</tr>
+						<!---  <tr style="border-bottom: 1px solid #ddd;">
+								<td style=" padding:7px 0px 7px 0; width:4cm; font-size: 18px"><b>Barumsatz: </b></td>
+								<td style=" padding:0px 100px 0px 0; font-size: 18px" class="text-right"><b><t t-esc="get_cash_turnover(o)"/></b></td>
+							</tr>
+							<tr style="border-bottom: 2px groove black !important;">
+								<td style=" padding:7px 0px 7px 0; width:4cm; font-size: 18px"><b>Kassenbewegung: </b></td>
+								<td style=" padding:0px 100px 0px 0; font-size: 18px" class="text-right"><b><t t-esc="get_cash_turnover(o)"/></b></td>
+							</tr>
+							<tr style="border-bottom: 2px groove black !important;">
+								<td style=" padding:7px 0px 7px 0; width:4cm; font-size: 18px"><b>Warenumsatz: </b></td>
+								<td style=" padding:0px 100px 0px 0; font-size: 18px" class="text-right"><b><t t-esc="get_warenumsatz(o)"/></b></td>
+							</tr> -->
+							<tr style="border-bottom: 2px groove black !important;">
+								<td style=" padding:7px 0px 7px 0; width:4cm; font-size: 18px"><b>Gesamtumsatz: </b></td>
+								<td style=" padding:0px 50px 0px 0; font-size: 18px" class="text-right"><b><t t-esc="get_hole_summary(o)"/></b></td>
+							</tr>
+							<tr style="border-bottom: 2px groove black !important;">
+								<td style=" padding:7px 0px 7px 0; width:4cm; font-size: 18px"><b>Umsatz 19%: </b></td>
+								<td style=" padding:0px 50px 0px 0; font-size: 18px" class="text-right"><b><t t-esc="get_vat_sum_19(o)"/></b></td>
+							</tr>
+							<tr style="border-bottom: 1px solid #ddd;">
+								<td style=" padding:7px 0px 7px 0; width:4cm; font-size: 18px"><b>Gutscheinverkauf: </b></td>
+								<td style=" padding:0px 50px 0px 0; font-size: 18px" class="text-right"><b><t t-esc="get_saled_vouchers(o)"/></b></td>
+							</tr>
+						</table>
+	                </div>
+		        </t>
+		    </t>
+		</template>
+	</data>
+</openerp>
